@@ -40,7 +40,7 @@ console.log(`Usando Metodo toUpperCase() : ${cad.toUpperCase()}`)
 // slice(a) -> corta desde a hasta el final
 // slice sirve para  cortar un sub array sin modificar el original
 // concat(sub-array) -> concatena
-
+ 
 
 // ***** Objetos *****
 console.log("Objetos")
@@ -85,3 +85,27 @@ num = a.push(0)
 num2 = a.unshift(10)
 
 console.log(`push ${num}, para unshift ${num2}`)
+
+// ***** JSON *****
+console.log("Json")
+
+// Js objetc notations
+obj = {nombre:"Alex", edad:12}
+
+console.log(obj)
+
+// los objetos Json tienen las propiedades en "" (comillas)
+
+string = JSON.stringify(obj)
+console.log(string)
+
+objJson = JSON.parse(string)
+console.log(objJson)
+
+let array = [{"hola":1}]
+
+string2 = JSON.stringify(array)
+
+obj2 = JSON.parse(string2)
+
+console.log(obj2[0])
