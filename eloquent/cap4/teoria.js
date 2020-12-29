@@ -40,7 +40,6 @@ console.log(`Usando Metodo toUpperCase() : ${cad.toUpperCase()}`)
 // slice(a) -> corta desde a hasta el final
 // slice sirve para  cortar un sub array sin modificar el original
 // concat(sub-array) -> concatena
- 
 
 // ***** Objetos *****
 console.log("Objetos")

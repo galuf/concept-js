@@ -45,3 +45,6 @@ console.log(mapa)
 // Reduce
 let mayor = array.reduce((a,b)=> a>b?a:b)
 console.log(mayor)
+
+//Diferencia entre ForEach y map, es que map crea un nuevo arreglo (en el ejemplo anterior "mapa")
+// mientras que ForEach simple mente hace un recorrido del array.
