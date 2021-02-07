@@ -1,5 +1,7 @@
 /* --------------- Variables ---------------*/
 
+// Tipos de variables promitivos no mutables
+
 let nombre = "Alex";
 var apellido = "Flores";
 const edad = 23;
@@ -68,3 +70,13 @@ nombre = true || "Alex";
 // dado que el valor de la izquierda es true, nombre toma el valor de Alex
 nombre = NaN || "Juan";
 // como la conversion de NaN es false, nombre toma el valor de NaN, no tomo "Juan"
+
+/* --------------- INmutabilidad de Datos Primitivos ---------------*/
+
+let cadena = "hola mucho gusto";
+cadena.toUpperCase();
+console.log(cadena); // -> hola mucho gusto
+// Los metodos de un string devuelven un nuevo string
+//esto es debido aque los string son inmutables
+let newCadena = cadena.toUpperCase(cadena);
+console.log(newCadena); // -> HOLA MUCHO GUSTO
