@@ -8,7 +8,9 @@ const edad = 23;
 
 /* Diferencias: let -> existe en un scope, fuere de este ya no existe
                 var -> En des uso, es una variable global
-                const -> variable con valor constante.
+                const -> variable con valor constante. esto significa que no se puede reasignar
+                      -> tener en cuenta que para variables del tipo mutable declarado con const
+                      -> si se puede modificar Ejm: const a = [] -> a.push(1) estamos mutando el array
 */
 
 // Scope -> Referencia donde una variable va a vivir
