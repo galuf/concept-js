@@ -68,9 +68,9 @@ console.log(nombre);
 //"Pepe"
 
 // EL operador && asigna el valor de la derecha, siempre y cuando el valor de la izquierda sea TRUE
-nombre = true || "Alex";
+nombre = true && "Alex";
 // dado que el valor de la izquierda es true, nombre toma el valor de Alex
-nombre = NaN || "Juan";
+nombre = NaN && "Juan";
 // como la conversion de NaN es false, nombre toma el valor de NaN, no tomo "Juan"
 
 /* --------------- INmutabilidad de Datos Primitivos ---------------*/
