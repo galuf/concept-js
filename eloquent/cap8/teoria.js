@@ -63,3 +63,39 @@ let edy = Person1("Edy");
 // -> No se puede establecer la propiedad 'user' en undefined
 
 // Estos errores con el this tambien se pueden evitar usando una clase class directamente
+
+/* ******** Debugger ************ */
+
+// Una forma de encontrar errores es usar console.log()
+// y mostrar el pantalla valores o resultados
+// Otra forma de detener la ejecucion es usar debugger
+console.log("1era accion");
+let a = 10;
+debugger; // Esto funcionara mejor en un navegador, es un punto de stop
+console.log("2da Accion");
+console.log(a);
+
+/* *********** Excepciones - Try Catch  */
+// Podemos prevenir un error, y no pausar la ejecucion, sino
+// mostrar el error capturado
+
+function prompDirection(question) {
+  let result = prompt(question);
+  if (result.toLowerCase() == "left") return "L";
+  if (result.toLowerCase() == "right") return "R";
+  throw new Error("Invalid direction " + result);
+}
+
+function look() {
+  if (prompDirection("Which way?") == "L") {
+    return "a House";
+  } else {
+    return "Two angry Bears";
+  }
+}
+
+try {
+  console.log("You see", look());
+} catch (err) {
+  console.log("Algo fue mal: " + err);
+}
