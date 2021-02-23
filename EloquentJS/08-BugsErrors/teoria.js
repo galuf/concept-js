@@ -99,3 +99,49 @@ try {
 } catch (err) {
   console.log("Algo fue mal: " + err);
 }
+
+/* *********** Excepciones - Try Finally  */
+// Finally se ejecutara si o si.
+
+const cuenta = {
+  a: 100,
+  b: 0,
+  c: 20,
+};
+
+function getCuenta() {
+  //  let nombreCuenta = prompt("Ingresa la cuenta"); // correr en browser
+  let nombreCuenta = "alex";
+  if (cuenta.hasOwnProperty(nombreCuenta))
+    throw new Error(`No existe la cuenta ${nombreCuenta}`);
+}
+
+function transferir(from, amount) {
+  if (cuenta[from] < amount) return;
+  cuenta[from] -= amount;
+  cuenta[getCuenta] += amount;
+  // Esta funcion estara correcta si getCuenta es correcta
+  // En caso contrario lanzara un erro
+  // pero al lanzar el error cuenta[from] ya se habra disminuido su dinero
+  // Esto es un grave error, debemos arreglarlo
+}
+
+function transferir2(from, amount) {
+  if (cuenta[from] < amount) return;
+  let progress = 0;
+  try {
+    cuenta[from] -= amount;
+    progress = 1;
+    cuenta[getCuenta] += amount;
+    progress = 2;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    // Esto se ejecutara si o si edspues de terminar el flujo try catch
+    if (progress == 1) cuenta[from] += amount;
+    // En caso de q se lance la excepcion, devovemos la plata a la cuenta
+  }
+}
+
+transferir2("a", 10);
+console.log(cuenta);
