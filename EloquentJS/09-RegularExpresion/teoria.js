@@ -131,6 +131,7 @@ console.log(match.index);
 
 // los string tienes el methodo match, que tiene un comportamiento similar
 console.log("one two 100".match(/\d+/));
+// >[ '100', index: 8, input: 'one two 100', groups: undefined ]
 // el emetodo exec() pata RegEx == match() para strings
 
 // Podemos ver que exect() -> puede retornar subgrupos
@@ -153,3 +154,74 @@ console.log(/bad(ly)?/.exec("bad"));
 console.log(/(\d)+/.exec("123"));
 // el subgrupo se tomara sola al ultimo caracter -> 3
 // > [ '123', '3', index: 0, input: '123', groups: undefined ]
+
+/************* Date Class *****************/
+
+// podemos instancias Date() y crear un fecha
+console.log(new Date());
+// > 2021-02-25T15:02:31.451Z
+// puedes pasar al constructor el año, mes(0-11),dia,horas, minutos,seg,miliseg
+// en caso de omitirlo se toma la fecha actual y en la hora se pone 00:00:00 0000
+
+// TIMESTAMPS
+// Es la representacion numerica de la cantidad de milisegundos transcurridos desde
+// 1970 01 01 00:00:00 hasta la fecha actual
+// para accder al timestamp usas getTime()
+console.log(new Date(1970, 0, 1, 1, 0, 0, 0));
+// > 1970-01-01T06:00:00.000Z
+console.log(new Date(1970, 0, 1, 1).getTime());
+// > 21600000 milisegundos
+//transformemos -> 21600 segundos -> 360 minutos -> 6 horas
+
+/****** Definir posicion de la cadena de busqueda *****/
+
+let fecha = /(\d{1,2})-(\d{1,2})-(\d{4})/;
+// esta expresion regular solicita 3 parametros
+// Pero sea la siguiente cadena
+let miFecha = "100-1-30000";
+// Esta fecho sera aceptada porq si existe la expresion buscada
+// > 00-1-3000
+console.log(fecha.exec(miFecha));
+// > [
+//   '00-1-3000', -> match
+//   '00', -> 1er sub grupo
+//   '1', -> 2do subgrupo
+//   '3000', -> 3er sub grupo
+//   index: 1,
+//   input: '100-1-30000',
+//   groups: undefined
+// ] -> recordar que los subgrupos se definen con los parentesis
+
+// Como podemos limitar a la cadena?
+// usamos los simbolos -> ^ y $
+// ^ -> nos dice el punto de inicio q buscamos
+// $ -> nos dice el punto final q buscamos
+
+let fecha_exacta = /^(\d{1,2})-(\d{1,2})-(\d{4})$/;
+let miFecha2 = "100-1-30000";
+console.log(fecha_exacta.test(miFecha2));
+// > False, esta ves no lo acepta
+console.log(fecha_exacta.test("10-2-2000"));
+// True, ahora si busca desde 10 el match
+// en el anteriro caso inicia la busqueda desde 100, como no cumple es falso
+
+// Veamos mas ejemplos :
+console.log(/^\d+$/.test("123")); // -> busca una secuencia de digitos, si se pone algo que nos es digito retornara false
+console.log(/^!/.test("!xasf")); // -> cualquier string que enpiece en !
+
+// Como definir el inicio y el final a una palabra?
+console.log(/cat/.test("concatenar"));
+// True -> Busca el match en cualquier posicion
+console.log(/\bcat\b/.test("concatenar"));
+// False -> busca cat al inicio y final de la cadena
+console.log(/\bcat\b/.test("cat"));
+// True
+
+/************* Busqueda de un patron **********/
+
+// para unir varias expresines regulares usamos | -> pipe
+let animalCount = /\b\d+ (pig|cow|chiken)s?\b/;
+console.log(animalCount.test("15 pigs"));
+// > True
+console.log(animalCount.test("15 pigChikens"));
+// > False
